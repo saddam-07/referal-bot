@@ -2,6 +2,15 @@ const TelegramBot = require('node-telegram-bot-api');
 const { Pool } = require('pg');
 require('dotenv').config();
 
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("⚠️ Необработанное отклонение промиса:", reason);
+});
+
+process.on("uncaughtException", (error) => {
+  console.error("🔥 Необработанное исключение:", error);
+});
+
+
 // Bot configuration
 const token = process.env.BOT_TOKEN;
 const secToken = process.env.BOT_SECOND_TOKEN
